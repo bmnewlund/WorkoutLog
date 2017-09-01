@@ -1,0 +1,21 @@
+{
+  "name": "workoutlogclient",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Brett Newlund"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/bmnewlund/bookStop",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "bootstrap": "^3.3.7"
+  }
+}
