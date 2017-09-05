@@ -2,7 +2,22 @@ var express = require('express');
 
 var app = express();
 
-var bodyParser=require('body-parser');
+var bodyParser = require('body-parser');
+
+var sequelize = req('./db.js');
+
+var User = sequelize.import('./models/user');
+
+
+// * DANGER: This will drop (delete) the user table if uncommented.
+// User.sync({force: true});
+
+
+
+User.sync();
+
+app.use(bodyParser.json());
+
 
 app.use(require('./middleware/headers'));
 
@@ -16,40 +31,24 @@ app.listen(3000, function(){
 });
 
 
-var Sequelize = require('sequelize');
-var sequelize = new Sequelize('workoutlog', 'postgres', 'postgresadvent1952', {
-	host: 'localhost',
-	dialect: 'postgres'
-});
 
-sequelize.authenticate().then(
-	function() {
-		console.log('connected to workoutlog postgres db');
-	},
-	function(err){
-		console.log(err);
-	}
-);
 
 
 // Data Model
-var User = sequelize.define('user', {
-	username: Sequelize.STRING,
-	passwordhash: Sequelize.STRING,
-});
 
-User.sync();
 
-app.use(bodyParser.json());
 
 app.post('/api/user', function(req,res) {
 	var username = req.body.user.username;
 	var pass = req.body.user.password;
+	// Need to create a user object and use sequelize to put into 
+	// the db
 	
 	User.create({
 		username: username,
 		passwordhash: pass
 	}).then(
+	// Sequelize is going to return the object it created from the db.
 		function createSuccess(user){
 			res.json({
 				user: user,
@@ -67,6 +66,5 @@ app.post('/api/user', function(req,res) {
 
 
 
-// * DANGER: This will drop (delete) the user table if uncommented.
-// User.sync({force: true});
+
 
