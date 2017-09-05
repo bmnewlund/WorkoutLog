@@ -4,7 +4,7 @@ var app = express();
 
 var bodyParser = require('body-parser');
 
-var sequelize = req('./db.js');
+var sequelize = require('./db.js');
 
 var User = sequelize.import('./models/user');
 
