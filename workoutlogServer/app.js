@@ -48,7 +48,7 @@ app.post('/api/user', function(req,res) {
 	
 	User.create({
 		username: username,
-		passwordhash: ""
+		passwordhash: pass
 	}).then(
 		function createSuccess(user){
 			res.json({
@@ -65,5 +65,8 @@ app.post('/api/user', function(req,res) {
 	// our database
 });
 
+
+
+// * DANGER: This will drop (delete) the user table if uncommented.
 // User.sync({force: true});
 
