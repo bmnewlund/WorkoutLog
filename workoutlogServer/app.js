@@ -6,13 +6,13 @@ var bodyParser = require('body-parser');
 
 var sequelize = require('./db.js');
 
-var User = sequelize.import('./models/user');
+var User = sequelize.import('./models/user.js');
 
 
 // * DANGER: This will drop (delete) the user table if uncommented.
 // User.sync({force: true});
 
-
+// User.sync({force:true});
 
 User.sync();
 
@@ -46,7 +46,7 @@ app.post('/api/user', function(req,res) {
 	
 	User.create({
 		username: username,
-		passwordhash: pass
+		passwordhash: ""
 	}).then(
 	// Sequelize is going to return the object it created from the db.
 		function createSuccess(user){
