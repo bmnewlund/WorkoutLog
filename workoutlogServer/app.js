@@ -17,7 +17,7 @@ app.listen(3000, function(){
 
 
 var Sequelize = require('sequelize');
-var sequelize = new Sequelize('workoutlog', 'postgres', 'yourpassword', {
+var sequelize = new Sequelize('workoutlog', 'postgres', 'postgresadvent1952', {
 	host: 'localhost',
 	dialect: 'postgres'
 });
