@@ -1,6 +1,6 @@
 var router = require('express').Router();
 var sequelize = require('../db.js');
-var User = sequelize.import('../models/user');
+var User = sequelize.import('../models/user.js');
 
 
 router.post('/', function(req,res) {
@@ -17,7 +17,7 @@ router.post('/', function(req,res) {
 		function createSuccess(user){
 			res.json({
 				user: user,
-				message: 'create'
+				message: 'created'
 			})
 		
 		},

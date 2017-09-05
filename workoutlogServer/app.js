@@ -9,6 +9,8 @@ var sequelize = require('./db.js');
 var User = sequelize.import('./models/user.js');
 
 
+
+
 // * DANGER: This will drop (delete) the user table if uncommented.
 // User.sync({force: true});
 
@@ -20,6 +22,7 @@ app.use(bodyParser.json());
 
 
 app.use(require('./middleware/headers'));
+app.use('/api/user', require('./routes/user'));
 
 app.use('/api/test', function(req, res){
 	res.send("Hello World");
