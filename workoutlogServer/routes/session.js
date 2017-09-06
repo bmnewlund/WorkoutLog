@@ -5,7 +5,7 @@ var bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
 
 
-router.post('/', function(req, res) {
+router.post('/', function(req, res) { //this breaks the function into two sections, the comma splits the parts into two later on.
 		var username = req.body.user.username;
 		var pass = req.body.user.password;
 		//Need to create a user object and use sequelize to put that user into

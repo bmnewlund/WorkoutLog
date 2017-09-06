@@ -9,7 +9,7 @@ router.post('/', function(req, res) {
 		var username = req.body.user.username;
 		var pass = req.body.user.password;
 		//Need to create a user object and use sequelize to put that user into
-
+console.log(pass)
 		User.create({
 			username: username,
 			passwordhash: bcrypt.hashSync(pass, 10)

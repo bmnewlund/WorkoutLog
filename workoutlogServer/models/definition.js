@@ -1,10 +1,10 @@
-module.exports = fucntion(sequelize, DataTypes) {
+module.exports = function(sequelize, DataTypes) {
 	//With define, the first argument is going to represent a column in the db tabel
 	
 	return sequelize.define('definition', {
 		description: DataTypes.STRING,
 		logType: DataTypes.STRING, //by time, reps, weight,...
-		owner: DataTypes.INTERGER
+		owner: DataTypes.INTEGER
 	},{
 	});
 };

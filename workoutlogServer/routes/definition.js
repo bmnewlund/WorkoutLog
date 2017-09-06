@@ -40,10 +40,10 @@ router.get('/', function(req, res) {
 	})
 	.then(
 		//success
-		function find AllSuccess(data) {
+		function findAllSuccess(data) {
 			//console.log(data);
 			res.json(data);
-		};
+		},
 		//failure
 		function findAllError(err) {
 			res.send(500, err.message);
