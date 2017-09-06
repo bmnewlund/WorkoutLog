@@ -17,7 +17,7 @@ $(function(){
 			var signup = $.ajax({
 				type: "POST",
 				url: WorkoutLog.API_BASE + "user",
-				data: JASON.stringify(user),
+				data: JSON.stringify(user),
 				contentType: "application/json"
 			});
 
@@ -25,9 +25,11 @@ $(function(){
 			signup.done(function(data) {
 				if(data.sessionToken) {
 					WorkoutLog.setAuthHeader(data.sessionToken);
-
+					console.log("You made it!");
+					console.log(data.sessionToken);
 				}
-				$("signup-modal").modal("hide");
+				
+				$("#signup-modal").modal("hide");
 				$(".disabled").removeClass("disabled");
 				$("#loginout").text("Logout");
 
