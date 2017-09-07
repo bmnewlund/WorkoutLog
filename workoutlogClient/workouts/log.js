@@ -69,10 +69,10 @@ $(function() {
 
 			getLog.done(function(data){
 
-				$('a[href="#update-log"]').tav("show");
+				$('a[href="#update-log"]').tab("show");
 				$('#update-result').val(data.result);
 				$('update-description').val(data.description);
-				$('#update0id').val(data.id)
+				$('#update-id').val(data.id)
 				});
 			},	
 
