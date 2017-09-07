@@ -5,28 +5,30 @@ var Definition = sequelize.import('../models/definition');
 
 router.post('/', function(req, res) {
 	//variables
-	var description = req.body.definition.desc;
-	var logType = req.body.definition.type;
-	var owner = req.user.id;
+	    var description = req.body.definition.desc;
+        var logType= req.body.definition.type;
+        var owner = req.user.id;
+
 	//methods
 	Definition
-		.create({
-			description: description,
-			logType: logType,
-			owner: owner
-		})
+	//objects must match the model 
+	.create({ 
+	   	description: description,
+	   	logType: logType,
+	   	owner: owner
+	   })
+
 		.then(
-			//createSuccess function
-			function createSuccess(definition) {
+				function createSuccess(definition) {
 				//send a response as json
-				res:json({
-					definition: definition
-				})
-			},
-			//createError function
-			function createError(err) {
-				res.send(500,err.message);
-			}
+		   		res.json({
+		   			definition: definition
+		   		});
+		   	}, 
+		   function createError(err) {
+		       res.send(500, err.message);
+		   }
+
 		);
 });
 
@@ -34,14 +36,14 @@ router.get('/', function(req, res) {
 	//user variable
 	var userid = req.user.id;
 	Definition
-	// findAll by owner method
+	//findAll by owner method
 	.findAll({
-		where: {owner: userid }
+		where: { owner: userid }
 	})
 	.then(
 		//success
 		function findAllSuccess(data) {
-			//console.log(data);
+			// console.log(data);
 			res.json(data);
 		},
 		//failure
@@ -50,5 +52,6 @@ router.get('/', function(req, res) {
 		}
 	);
 });
+
 
 module.exports = router;
